@@ -154,8 +154,10 @@ int main(int argc, char* argv[]) {
 		struct pcap_pkthdr* header;
 		const u_char* packet;
 		int res = pcap_next_ex(pcap, &header, &packet);
+
 		if (res == 0)
 			continue;
+
 		if (res == PCAP_ERROR || res == PCAP_ERROR_BREAK) {
 			printf("pcap_next_ex return %d(%s)\n", res, pcap_geterr(pcap));
 			break;
@@ -208,7 +210,7 @@ int main(int argc, char* argv[]) {
 		}
 		else{
 			for(int i=0;i<10;i++)
-				printf("%x ", 0x00);
+				printf("%02x ", 0x00);
 			printf("\n\n");
 		}
 	}
